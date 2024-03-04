@@ -15,7 +15,13 @@
       </tr>
     </tbody>
   </table>
-  <div><%= link_to "i", edit_user_path(current_user.id) %></div>
+  <div>
+    <% if @user == current_user %>
+      <%= link_to "i", edit_user_path(@user.id) %>
+    <% else %>
+      <%= link_to "i", user_path(current_user.id) %>
+    <% end %>
+  </div>
   <h2>New book</h2>
   <%= form_with model: Book.new do |f| %>
     <h4>Title</h4>
