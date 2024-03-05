@@ -1,19 +1,35 @@
-<h2>User info</h2>
-<% if @user.errors.any? %>
-  <%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved:
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mt-3 mx-auto px-5">
+      <h2>User info</h2>
+      <% if @user.errors.any? %>
+        <h3>
+          <%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved:
+        </h3>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
 
-<%= form_with model: @user do |f| %>
-  <h4>Name</h4>
-  <%= f.text_field :name, autofocus: true, id:"inputName" %>
-  <h4>Image</h4>
-  <%= f.file_field :profile_image, accept: "image/*" %>
-  <h4>Introduction</h4>
-  <%= f.text_area :introduction %>
-  <%= f.submit "Update User" %>
-<% end %>
+      <%= form_with model: @user do |f| %>
+      <div class="form-group">
+        <p>Name</p>
+        <%= f.text_field :name, autofocus: true, id:"inputName", class: "form-control" %>
+      <div class="form-group">
+      </div>
+        <p>Image</p>
+        <%= f.file_field :profile_image, accept: "image/*" %>
+      <div class="form-group">
+      </div>
+        <p>Introduction</p>
+        <%= f.text_area :introduction, class: "form-control" %>
+      <div class="form-group">
+      </div>
+        <%= f.submit "Update User", class: "btn btn-secondary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
